@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jerrygerou/blockchain_project#readme",
   "devDependencies": {
+    "jest": "^23.5.0",
     "nodemon": "^1.18.3"
   },
   "dependencies": {
