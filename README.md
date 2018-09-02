@@ -28,3 +28,9 @@ HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002 npm r
 ```
 npm run test
 ```
+
+# Glossary of common terms
+- chain linking: Chain linking is the process of connecting two blockchains with each other, thus allowing transactions between the chains to take place. This will allow blockchains like Bitcoin to communicate with other sidechains, allowing the exchange of assets between them
+- mining: Mining is the process of adding transaction records to the cryptocurrency's public ledger of past transactions or blockchain. This ledger of past transactions is called the blockchain as it is a chain of blocks. The blockchain serves to confirm transactions to the rest of the network as having taken place. Cryptocurrency nodes use the blockchain to distinguish legitimate Bitcoin transactions from attempts to re-spend coins that have already been spent elsewhere. Mining is intentionally designed to be resource-intensive and challenging so that the number of blocks found each day by miners remains steady
+- mining difficulty: Measures how hard it would be to find the next block. (Proof of work difficulty is defined by leading zeros)
+- nonce: A nonce ("number only used once") is a number added to a hashed block that, when rehashed, meets the difficulty level restrictions. The nonce is the number that blockchain miners are solving for.
