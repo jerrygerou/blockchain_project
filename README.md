@@ -4,12 +4,6 @@ Blockchain Cryptocurrency Project for Practice
 # Purpose
 To create blockchain functionality and tests in order to understand functionality and behavior of blockchain.
 
-# Notes on Proof of Work System
-- A system that requires miners to do computational work to add blocks.
-- Any peer can replace the blockchain.
-- The proof-of-work makes it expensive to generate corrupt chains.
-- Manageable to submit one block, unproductive to generate an entire chain.
-
 # Running the code
 First instance:
  ```
@@ -28,6 +22,11 @@ HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002 npm r
 ```
 npm run test
 ```
+# Notes on Proof of Work System
+- A system that requires miners to do computational work to add blocks.
+- Any peer can replace the blockchain.
+- The proof-of-work makes it expensive to generate corrupt chains.
+- Manageable to submit one block, unproductive to generate an entire chain.
 
 # Glossary of common terms
 - chain linking: Chain linking is the process of connecting two blockchains with each other, thus allowing transactions between the chains to take place. This will allow blockchains like Bitcoin to communicate with other sidechains, allowing the exchange of assets between them
