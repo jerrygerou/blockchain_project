@@ -22,7 +22,7 @@ const peers =process.env.PEERS ? process.env.PEERS.split(',') : [];
 // Listening on port 3002
 // Socket connected. Socket to me.
 
-// Can then open a new tab and create another peer
+// Can then open a new tab and create another peer, giving new ports
 // HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002 npm run dev
 // [nodemon] starting `node ./app`
 // Listening for peer-to-perr connections on: 5003
@@ -66,15 +66,27 @@ class P2pServer {
 
     this.messageHandler(socket);
 
-    socket.send(JSON.stringify(this.blockchain.chain));
+    this.sendChain(socket);
   }
 
   messageHandler(socket) {
     socket.on('message', message => {
       // Transform stringified JSON to javascript object
       const data = JSON.parse(message);
-      console.log('data', data);
+
+      // Sync chains from peers
+      this.blockchain.replaceChain(data);
     });
+  }
+
+  // helper function
+  sendChain(socket) {
+    socket.send(JSON.stringify(this.blockchain.chain));
+  }
+
+  // Send updated blockchain to all peers
+  syncChains() {
+    this.sockets.forEach(socket => this.sendChain(socket));
   }
 }
 
