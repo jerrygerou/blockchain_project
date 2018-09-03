@@ -73,6 +73,10 @@ npm run dev-test
 - Add in Difficulty and nonce (number only used once) attribute for mining purposes - keeping the blockchain safe from being hacked
 - Added ability for difficulty to adjust to number of miners (comparing time between blocks added timestamps)
 
+- Create Wallet class for cryptocurrency
+- Create a Transaction class for... transactions
+- Allow transactions to have multiple outputs/be udpated
+
 # Notes on Proof of Work System
 - A system that requires miners to do computational work to add blocks.
 - Any peer can replace the blockchain.
