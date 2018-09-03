@@ -4,7 +4,7 @@ Blockchain Cryptocurrency Project for Practice
 # Purpose/Understanding
 To create blockchain functionality and tests in order to understand functionality and behavior of blockchain.
 
-Blockchain is a digital ledger without centralization, public peers have the capability to add on to ledger, keeping all peers updated with most recent blocks. When adding new blocks, longest chain wins.
+Blockchain is a digital ledger without centralization and is distributed across connected nodes in a network. Public peers have the capability to add on to ledger, keeping all peers updated with most recent blocks. When adding new blocks, longest chain wins.
 
 # Running the code
 First instance:
@@ -46,6 +46,9 @@ npm i ws --save
 # Running the tests
 ```
 npm run test
+```
+```
+npm run dev-test
 ```
 
 # Accomplishments/Tasks Completed
