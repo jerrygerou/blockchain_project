@@ -1,8 +1,10 @@
 # blockchain_project
 Blockchain Cryptocurrency Project for Practice
 
-# Purpose
+# Purpose/Understanding
 To create blockchain functionality and tests in order to understand functionality and behavior of blockchain.
+
+Blockchain is a digital ledger without centralization and is distributed across connected nodes in a network. Public peers have the capability to add on to ledger, keeping all peers updated with most recent blocks. When adding new blocks, longest chain wins.
 
 # Running the code
 First instance:
@@ -18,10 +20,46 @@ Third instance (you get the gist):
 HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws://localhost:5002 npm run dev
 ```
 
+# Things to Install
+
+JavaScript library of crypto standards
+```
+npm i crypto-js --save
+```
+Testing
+```
+npm i jest --save-dev
+```
+Express framework
+```
+npm i express --save
+```
+Node.js body parsing middleware
+```
+npm i body-parser --save
+```
+Web Sockets
+```
+npm i ws --save
+```
+
 # Running the tests
 ```
 npm run test
 ```
+```
+npm run dev-test
+```
+
+# Accomplishments/Tasks Completed
+- Unit tests for each new function or class
+- Block class with constructor containing, timestamp, lastHash, current hash, data and (later) nonce
+- Blockchain class allowing new blocks to be added, but validated (checks to ensure genesis block, if last blocks are the same), allows chain to be replaced if the received chain is not longer than the current chain
+- Set up API for GET and POST for new blocks (using Postman as interface)
+- Set up peer-to-peer servers, allowing peers to contribute to the decentralized blockchain (given the classes in place)
+- Add in Difficulty and nonce (number only used once) attribute for mining purposes - keeping the blockchain safe from being hacked
+- Added ability for difficulty to adjust to number of miners (comparing time between blocks added timestamps)
+
 # Notes on Proof of Work System
 - A system that requires miners to do computational work to add blocks.
 - Any peer can replace the blockchain.
