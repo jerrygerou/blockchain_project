@@ -6,6 +6,11 @@ To create blockchain functionality and tests in order to understand functionalit
 
 Blockchain is a digital ledger without centralization and is distributed across connected nodes in a network. Public peers have the capability to add on to ledger, keeping all peers updated with most recent blocks. When adding new blocks, longest chain wins.
 
+Cryptocurrency! Step over, bitcoin. Three main components:
+- wallet objects
+- keys for digital signatures and verification (private and public)
+- transaction objects to represent currency exchange
+
 # Running the code
 First instance:
  ```
@@ -42,6 +47,10 @@ Web Sockets
 ```
 npm i ws --save
 ```
+Elliptic (provides private, public key generation for cryptocurrency)
+```
+npm i elliptic --save
+```
 
 # Running the tests
 ```
@@ -72,3 +81,6 @@ npm run dev-test
 - **mining difficulty**: Measures how hard it would be to find the next block. (Proof of work difficulty is defined by leading zeros)
 - **nonce**: A nonce ("number only used once") is a number added to a hashed block that, when rehashed, meets the difficulty level restrictions. The nonce is the number that blockchain miners are solving for.
 - **51% Attack**: If a dishonest miner has more than at least 51% of the network's power, thus adding its own dirty block. But it's really difficult/expensive to do so.
+- **wallet**: As it relates to cryptocurrency, wallets store the balance of an individual with a private key (used to generate signatures) and public key (used to verify signatures and the public address).
+- **transactions**: Includes input (timestamp, balance, signature, public key), output (amount, address), another output (amount, address sent to SELF with resulting balance after transaction)
+- **digital signatures**: Based on private and public keys. Private key uses hash values to create new signature, which can be checked against public key.
