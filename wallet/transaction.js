@@ -8,13 +8,14 @@ class Transaction {
   }
 
   static newTransaction(senderWallet, recipient, amount) {
-    const transaction = new this();
 
     //Check to see if wallet has enough fundz.
     if (amount > senderWallet.balance) {
       console.log(`Amount: ${amount} exceeds balance.`)
       return;
     }
+
+    const transaction = new this();
 
     // using spread operator
     transaction.outputs.push(...[
@@ -31,8 +32,16 @@ class Transaction {
       timestamp: Date.now(),
       amount: senderWallet.balance,
       address: senderWallet.publicKey,
-      signature: senderWallet.sign(transaction.outputs)
-    };
+      signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
+    }
+  }
+
+  static verifyTransaction(transaction) {
+    return ChainUtil.verifySignature(
+      transaction.input.address,
+      transaction.input.signature,
+      ChainUtil.hash(transaction.outputs)
+    );
   }
 }
 
