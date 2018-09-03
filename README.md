@@ -51,6 +51,10 @@ Elliptic (provides private, public key generation for cryptocurrency)
 ```
 npm i elliptic --save
 ```
+UUID for unique transaction ID creation
+```
+npm i uuid --save
+```
 
 # Running the tests
 ```
