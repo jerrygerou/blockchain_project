@@ -75,7 +75,8 @@ npm run dev-test
 
 - Create Wallet class for cryptocurrency
 - Create a Transaction class for... transactions
-- Allow transactions to have multiple outputs/be udpated
+- Allow transactions to have multiple outputs/be updated
+- Create transaction pool for multiple users to submit new blocks
 
 # Notes on Proof of Work System
 - A system that requires miners to do computational work to add blocks.
