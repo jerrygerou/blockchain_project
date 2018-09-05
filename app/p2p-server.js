@@ -94,7 +94,7 @@ class P2pServer {
     });
   }
 
-  // helper function
+  // helper functions
   sendChain(socket) {
     socket.send(JSON.stringify({
       type: MESSAGE_TYPES.chain,
