@@ -42,7 +42,7 @@ app.post('/transact', (req, res) => {
   res.redirect('/transactions');
 });
 
-// allow other individuals to send transactinos through public key
+// allow other individuals to send transactions through public key
 app.get('/public-key', (req, res) => {
   res.json({ publicKey: wallet.publicKey });
 });
