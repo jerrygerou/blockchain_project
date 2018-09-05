@@ -12,6 +12,10 @@ const P2P_PORT = process.env.P2P_PORT || 5001;
 // If so split up peers in an array, separated by commas.
 // If not, sets empty array.
 const peers =process.env.PEERS ? process.env.PEERS.split(',') : [];
+const MESSAGE_TYPES = {
+  chain: 'CHAIN',
+  transaction: 'TRANSACTION'
+};
 
 // Combines all peers environment variables with string
 // This will define a new port, a peer port and the peer location already open
@@ -31,8 +35,9 @@ const peers =process.env.PEERS ? process.env.PEERS.split(',') : [];
 // Socket connected. Socket to me.
 
 class P2pServer {
-  constructor(blockchain) {
+  constructor(blockchain, transactionPool) {
     this.blockchain = blockchain;
+    this.transactionPool = transactionPool;
     this.sockets = [];
   }
 
@@ -73,20 +78,41 @@ class P2pServer {
     socket.on('message', message => {
       // Transform stringified JSON to javascript object
       const data = JSON.parse(message);
-
-      // Sync chains from peers
-      this.blockchain.replaceChain(data);
+      switch(data.type) {
+        case MESSAGE_TYPES.chain:
+          // Sync chains from peers
+          this.blockchain.replaceChain(data.chain);
+          break;
+        case MESSAGE_TYPES.transaction:
+          this.transactionPool.updateOrAddTransaction(data.transaction);
+          break;
+      }
     });
   }
 
   // helper function
   sendChain(socket) {
-    socket.send(JSON.stringify(this.blockchain.chain));
+    socket.send(JSON.stringify({
+      type: MESSAGE_TYPES.chain,
+      chain: this.blockchain.chain
+    }));
+  }
+
+  sendTransaction(socket, transaction) {
+    socket.send(JSON.stringify({
+      type: MESSAGE_TYPES.transaction,
+      transaction
+    }));
   }
 
   // Send updated blockchain to all peers
   syncChains() {
     this.sockets.forEach(socket => this.sendChain(socket));
+  }
+
+  // Sends one transaction to everyone
+  broadcastTransaction(transaction) {
+    this.sockets.forEach(socket => this.sendTransaction(socket, transaction));
   }
 }
 
