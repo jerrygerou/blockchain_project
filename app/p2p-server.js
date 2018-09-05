@@ -87,14 +87,14 @@ class P2pServer {
         case MESSAGE_TYPES.transaction:
           this.transactionPool.updateOrAddTransaction(data.transaction);
           break;
-        case CLEAR_TRANSACTIONS.clear_transactions:
+        case MESSAGE_TYPES.clear_transactions:
           this.transactionPool.clear();
           break;
       }
     });
   }
 
-  // helper function
+  // helper functions
   sendChain(socket) {
     socket.send(JSON.stringify({
       type: MESSAGE_TYPES.chain,
